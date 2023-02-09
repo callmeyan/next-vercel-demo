@@ -2,11 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "./../styles/Home.module.scss";
 import { Row, Col } from "antd";
+import { request } from "./../service/request";
 
 export async function getStaticProps() {
   // 调用外部 API 获取博文列表
-  const res = await fetch("http://localhost:3000/api/article");
-  const data = await res.json();
+  const data = await request("/api/article");
 
   // 通过返回 { props: { posts } } 对象，Blog 组件
   // 在构建时将接收到 `posts` 参数
