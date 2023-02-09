@@ -2,7 +2,7 @@ const dev = process.env.NODE_ENV !== "production";
 export const API_URL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:3000"
-    : process.env.VERCEL_URL;
+    : "https://" + process.env.VERCEL_URL;
 
 export async function request<T>(url: string) {
   const r = await fetch(API_URL + url);
