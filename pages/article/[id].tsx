@@ -6,7 +6,7 @@ import styles from "./../../styles/Home.module.scss";
 
 export async function fetchArticle(id) {
   // 调用外部 API 获取博文列表
-  const res = await fetch(`http://localhost:3000/api/article/${id}`);
+  const res = await fetch(`/api/article/${id}`);
   const data = await res.json();
   return data;
 }
