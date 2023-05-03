@@ -6,15 +6,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^4.3.0",
     "@vercel/analytics": "^1.0.0",
     "antd": "^5.4.6",
+    "dayjs": "^1.11.7",
+    "mysql": "^2.18.1",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/mysql": "^2.15.21",
     "@types/node": "18.16.2",
     "@types/react": "18.2.0",
+    "chalk": "^5.2.0",
     "less-loader": "^11.1.0",
     "sass": "^1.58.0",
     "typescript": "5.0.4"

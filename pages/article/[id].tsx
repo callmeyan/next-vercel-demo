@@ -1,50 +1,48 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Button } from 'antd'
+import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
 import styles from "./../../styles/Home.module.scss";
+import {selectOneById} from "../../service/article";
+import ArticleModel from "../../service/models/ArticleModel";
+import logger from "../../service/logger";
 
-export async function fetchArticle(id) {
-  // 调用外部 API 获取博文列表
-  const res = await fetch(`/api/article/${id}`);
-  const data = await res.json();
-  return data;
+
+export async function getServerSideProps({params}) {
+    const id = Number(params.id);
+    const article = await selectOneById(id)
+
+    // 通过返回 { props: { posts } } 对象，Blog 组件
+    // 在构建时将接收到 `posts` 参数
+    return article ? {
+        props: {article}
+    } : {notFound: true};
 }
-export default function Detail() {
-  const router = useRouter();
-  const [article, setArticle] = useState();
-  useEffect(() => {
-    if (router.query.id) {
-      fetchArticle(router.query.id).then((art) => setArticle(art));
-    }
-  }, [router.query]);
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <div>
-          <Button onClick={router.back}>Back</Button>
+const ArticleDetail: React.FC<{
+    article: ArticleModel
+}> = ({article}) => {
+    const router = useRouter();
+    useEffect(() => {
+
+    }, [router.query]);
+
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>{article.title}</title>
+                <meta name="keywords" content={article.keyword}/>
+                <meta name="description" content={article.description}/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
+            <main className={styles.detailPage}>
+                <section className="container">
+                    <h1 className={styles.title}>{article.title}</h1>
+                    <div className={styles.contentContainer} dangerouslySetInnerHTML={{
+                        __html: article.content
+                    }}></div>
+                </section>
+            </main>
         </div>
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>{JSON.stringify(article)}</div>
-      </main>
-
-      <footer>
-        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
+export default ArticleDetail

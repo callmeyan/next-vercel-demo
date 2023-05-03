@@ -1,0 +1,20 @@
+.header {
+  position: relative;
+  .flex{
+    display: flex;
+  }
+  header{
+    position: absolute;
+    left:20px;right:20px;
+    top:20px;
+  }
+  .alignBetween{
+    justify-content: space-between;
+  }
+}
+
+.banner {
+  background: url(http://dhz.wkbanjia.com/wp-content/uploads/2020/04/1586231955-thumb-41.jpg) no-repeat;
+  background-size: cover;
+  height: 550px;
+}
