@@ -2,7 +2,7 @@ import db from "./db";
 import ArticleModel from "./models/ArticleModel";
 
 export async function selectAll() {
-    const list = await db.selectList<ArticleModel[]>('select * from article');
+    const list = await db.selectList<ArticleModel[]>('select * from article order by id desc');
     return list;
 }
 

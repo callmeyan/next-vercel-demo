@@ -1,5 +1,14 @@
 .detailPage{
   padding: 50px 0;
+  .articleContent{
+    line-height: 1.5;
+    p{
+      margin-bottom: 20px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 .title{
   font-size: 24px;
@@ -8,4 +17,47 @@
   margin-bottom: 40px;
   position: relative;
   color: #333;
+}
+.articleItemContainer{
+  padding: 20px 0;
+  border-bottom: solid 1px #eee;
+  &:last-child{
+    margin-bottom: 0;
+  }
+  figure{
+    position: relative;
+    width: 200px;
+    height: 120px;
+    img{
+      object-fit: cover;
+      height: 120px;
+      display: block;
+    }
+  }
+  .createTime{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fafafa;
+    text-align:center;
+    display: flex;
+    align-items: center;
+  }
+  .createTimerInner{
+    margin: auto;
+    color: #424242;
+    section:first-child{
+      font-size: 50px;
+      font-weight: bold;
+    }
+  }
+  h3{
+    margin-bottom: 15px;
+  }
+}
+.info{
+  flex:1;
+  padding:0 0 0 15px;
 }

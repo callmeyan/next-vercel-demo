@@ -36,10 +36,12 @@ const ArticleDetail: React.FC<{
             </Head>
             <main className={styles.detailPage}>
                 <section className="container">
-                    <h1 className={styles.title}>{article.title}</h1>
-                    <div className={styles.contentContainer} dangerouslySetInnerHTML={{
-                        __html: article.content
-                    }}></div>
+                    <article className={styles.articleContent}>
+                        <h1 className={styles.title}>{article.title}</h1>
+                        <div className={styles.contentContainer} dangerouslySetInnerHTML={{
+                            __html: article.content
+                        }}></div>
+                    </article>
                 </section>
             </main>
         </div>

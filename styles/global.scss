@@ -3,13 +3,15 @@ html {
   --footer-padding: 100px 0;
   --footer-color: #fff;
   --footer-background-color: #002a38;
+  //background: #f5f6f7;
+  --body-background: #fff;
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  background: #f5f6f7;
   color: #4e5358;
+  background-color: var(--body-background);
   font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif !important;
 }
 
@@ -29,6 +31,9 @@ img {
 
 h1,
 h2,
+h3,
+h4,
+figure,
 p,
 ul {
   margin: 0;
@@ -53,8 +58,13 @@ button {
   align-items: center;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .app-main-container {
   min-height: calc(100vh - var(--footer-height));
+  padding: 50px 0;
 }
 
 footer {
